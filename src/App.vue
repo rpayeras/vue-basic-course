@@ -1,54 +1,54 @@
-<template>
-  <div id="app">
-    <header>
-      <span>Vue.js PWA</span>
-    </header>
-    <main>
-      <img src="./assets/logo.png" alt="Vue.js PWA">
-      <router-view></router-view>
-    </main>
-  </div>
-</template>
+<template lang="html" src="./App.html"></template>
 
 <script>
-export default {
-  name: 'app'
-}
+  import Logo from '@/components/Logo'
+  import Search from './components/Search'
+  import Loading from './components/Loading'
+  import LoadingError from './components/LoadingError'
+
+  export default {
+    name: 'app',
+    data () {
+      return {
+      }
+    },
+    components: {
+      Search,
+      Logo,
+      Developers: () => ({
+        component: import('./components/Developers'),
+        delay: 400,
+        timeout: 5000,
+        loading: Loading,
+        error: LoadingError
+      }),
+      Bookmarks: () => ({
+        component: import('./components/Bookmarks'),
+        delay: 400,
+        timeout: 5000,
+        loading: Loading,
+        error: LoadingError
+      })
+    },
+    methods: {
+      onSearch (criteria) {
+        console.log('App component', criteria)
+      }
+    }
+  }
 </script>
 
-<style>
-body {
-  margin: 0;
-}
+<style lang="css">
+  @import 'assets/css/colors.css';
+  .logo{
+    color: var(--color-light-black);
+  }
 
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
+  .userConNombre{
+    background-color: var(--color-light-black);
+  }
 
-main {
-  text-align: center;
-  margin-top: 40px;
-}
+</style>
+<style lang="css" scoped>
 
-header {
-  margin: 0;
-  height: 56px;
-  padding: 0 16px 0 24px;
-  background-color: #35495E;
-  color: #ffffff;
-}
-
-header span {
-  display: block;
-  position: relative;
-  font-size: 20px;
-  line-height: 1;
-  letter-spacing: .02em;
-  font-weight: 400;
-  box-sizing: border-box;
-  padding-top: 16px;
-}
 </style>
