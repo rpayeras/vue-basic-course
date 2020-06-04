@@ -1,9 +1,11 @@
 <template lang="html">
-  <ul class="developers">
-    <li v-for="user in users" class="developer__item" v-bind:class="{ 'userConNombre': user.name === false}">
-      <Developer v-bind:avatar="user.avatar" v-bind:name="user.name" v-bind:company="user.company" v-bind:email="user.email" v-bind:gists="user.gists" v-bind:login="user.login" v-bind:repos="user.repos"></Developer>
-    </li>
-  </ul>
+  <transition name="fade" v-if="show">
+    <ul class="developers">
+      <li v-for="user in users" class="developer__item" v-bind:class="{ 'userConNombre': user.name === false}">
+        <Developer v-bind:avatar="user.avatar" v-bind:name="user.name" v-bind:company="user.company" v-bind:email="user.email" v-bind:gists="user.gists" v-bind:login="user.login" v-bind:repos="user.repos"></Developer>
+      </li>
+    </ul>
+  </transition>
 </template>
 
 <script>
@@ -15,7 +17,8 @@
     name: 'Developers',
     data () {
       return {
-        users: UsersMock
+        users: UsersMock,
+        show: false
       }
     },
     components: {
@@ -24,6 +27,7 @@
     created () {
       bus.$on('search', criteria => {
         console.log('Developers', criteria)
+        this.show = true
       })
     },
     mounted () {

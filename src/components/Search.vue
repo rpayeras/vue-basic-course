@@ -15,7 +15,8 @@
     name: 'Search',
     data () {
       return {
-        criteria: ''
+        criteria: '',
+        show: false
       }
     },
     methods: {
