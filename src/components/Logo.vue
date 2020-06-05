@@ -7,7 +7,7 @@
     name: 'Logo',
     data () {
       return {
-        appName: 'App omg wtf'
+        appName: 'Curso Vue Js'
       }
     },
     filters: {
@@ -29,6 +29,5 @@
 
 <style lang="css" scoped>
   .logo {
-    background-color: red;
   }
 </style>

@@ -3,15 +3,18 @@
     <header>
       <Logo></Logo>
       <nav class="menu logo">
+        <router-link v-bind:to="{ name: 'home' }">
+          <a href="">Home</a>
+        </router-link>
         <Search v-on:search="onSearch"></Search>
       </nav>
     </header>
     <main class="app__content">
       <aside>
-        <Bookmarks></Bookmarks>
+        <Developers></Developers>
       </aside>
       <section>
-          <Developers></Developers>
+        <router-view></router-view>
       </section>
     </main>
   </div>
@@ -22,6 +25,7 @@
   import Search from './components/Search'
   import Loading from './components/Loading'
   import LoadingError from './components/LoadingError'
+  import Developers from './components/Developers'
 
   export default {
     name: 'app',
@@ -32,13 +36,7 @@
     components: {
       Search,
       Logo,
-      Developers: () => ({
-        component: import('./components/Developers'),
-        delay: 400,
-        timeout: 5000,
-        loading: Loading,
-        error: LoadingError
-      }),
+      Developers,
       Bookmarks: () => ({
         component: import('./components/Bookmarks'),
         delay: 400,
@@ -58,8 +56,10 @@
 <style lang="css">
   @import 'assets/css/global.css';
   @import 'assets/css/colors.css';
+
   .logo{
-    color: var(--color-light-black);
+    font-family: "Trebuchet MS";
+
   }
 
   .userConNombre{
@@ -67,6 +67,11 @@
   }
 
 </style>
-<style lang="css" scoped>
-
+<style lang="scss" scoped>
+  .app{
+    &__content{
+      display: flex;
+      flex-direction: row;
+    }
+  }
 </style>

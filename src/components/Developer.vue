@@ -34,17 +34,16 @@
         required: true
       },
       email: {
-        type: String,
-        required: true
+        type: String
       },
       company: {
         type: String
       },
       repos: {
-        type: String
+        type: Number
       },
       gists: {
-        type: String
+        type: Number
       }
     },
     computed: {
@@ -95,3 +94,15 @@
     }
   }
 </script>
+
+
+<style lang="scss">
+  .developer{
+    &__avatar{
+      img{
+        border-radius: 50%;
+      }
+      margin: 10px;
+    }
+  }
+</style>
