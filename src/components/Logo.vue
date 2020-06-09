@@ -1,5 +1,5 @@
 <template lang="html">
-  <h1 class="logo">{{ appName | upper | capitalize }}</h1>
+  <h1 class="logo"><img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg" alt="">{{ appName | upper | capitalize }}</h1>
 </template>
 
 <script>
@@ -7,7 +7,7 @@
     name: 'Logo',
     data () {
       return {
-        appName: 'Curso Vue Js'
+        appName: ''
       }
     },
     filters: {
@@ -27,7 +27,10 @@
   }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
   .logo {
+    img{
+      width: 50px;
+    }
   }
 </style>

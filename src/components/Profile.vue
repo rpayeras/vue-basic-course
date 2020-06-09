@@ -1,6 +1,9 @@
 <template lang="html">
   <section class="profile">
+    <img v-bind:src="info.avatar_url" alt="" class="profile__photo">
     <h1 class="profile__name">{{ info.email }}</h1>
+    <h2 class="profile__blog">{{ info.blog }}</h2>
+    div.profile__
   </section>
 </template>
 

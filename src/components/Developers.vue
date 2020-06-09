@@ -90,16 +90,33 @@
 
 <style lang="scss">
   .developers{
+    padding: 0;
+
     .developer{
+      background-color: #f7f5f5;
+
       img{
         width:50px;
       }
 
       &__item{
         list-style: none;
-        border: 1px solid grey;
+        margin-bottom: 10px;
         width: 100%;
+
+        a{
+          text-decoration: none;
+          color: black;
+        }
+
+
       }
+
+      &:hover{
+        background-color: white;
+      }
+
+      padding: 10px;
     }
   }
 </style>

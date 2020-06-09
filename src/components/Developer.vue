@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="developer">
     <div class="developer__avatar">
-      <img v-bind:src="avatar" alt="">
+      <img class="developer__avatar--img" v-bind:src="avatar" alt="">
     </div>
     <div class="developer__content">
       <h1 class="developer__content--title">{{ name }}</h1>
@@ -96,13 +96,18 @@
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
   .developer{
     &__avatar{
       img{
         border-radius: 50%;
       }
       margin: 10px;
+    }
+    &__content{
+      &--title{
+        font-weight: bold;
+      }
     }
   }
 </style>

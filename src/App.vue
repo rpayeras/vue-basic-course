@@ -3,11 +3,15 @@
     <header>
       <Logo></Logo>
       <nav class="menu logo">
-        <router-link v-bind:to="{ name: 'home' }">
-          <a href="">Home</a>
-        </router-link>
-        <Search v-on:search="onSearch"></Search>
+        <ul>
+          <li>
+            <router-link v-bind:to="{ name: 'home' }">
+              <a href="">Home</a>
+            </router-link>
+          </li>
+        </ul>
       </nav>
+      <Search v-on:search="onSearch"></Search>
     </header>
     <main class="app__content">
       <aside>
@@ -72,6 +76,8 @@
     &__content{
       display: flex;
       flex-direction: row;
+      width: 50%;
+      margin: auto;
     }
   }
 </style>
