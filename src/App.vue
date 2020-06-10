@@ -15,6 +15,11 @@
     </header>
     <main class="app__content">
       <aside>
+        <h2>Bookmarks list</h2>
+        <Bookmarks></Bookmarks>
+      </aside>
+      <aside>
+        <h2>Developers list</h2>
         <Developers></Developers>
       </aside>
       <section>

@@ -3,12 +3,14 @@
     <img v-bind:src="info.avatar_url" alt="" class="profile__photo">
     <h1 class="profile__name">{{ info.email }}</h1>
     <h2 class="profile__blog">{{ info.blog }}</h2>
-    div.profile__
+    <Star v-bind:selected="isBookmarked" v-on:clicked="onBookmark"></Star>
   </section>
 </template>
 
 <script>
   import axios from 'axios'
+  import { mapGetters, mapActions } from 'vuex'
+  import Star from './Star'
 
   export default{
     name: 'Profile',
@@ -17,6 +19,9 @@
         type: String,
         required: true
       }
+    },
+    components: {
+      Star
     },
     data () {
       return {
@@ -28,6 +33,18 @@
         }
       }
     },
+    computed:
+      Object.assign({}, mapGetters({
+        isBookmarked: 'isSelected'
+      }),
+      mapActions({
+        modifyBookmark: 'modify'
+      }),
+      {
+        isSelected () {
+          return this.isBookmarked(this.info.login)
+        }
+      }),
     methods: {
       getUserData () {
         console.log(process.env.API)
@@ -42,6 +59,12 @@
           .then(user => {
             this.info = user
           })
+      },
+      onBookmark () {
+        this.modifyBookmark({
+          id: this.info.login,
+          name: this.info.name
+        })
       }
     },
     mounted () {

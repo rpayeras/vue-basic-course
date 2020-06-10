@@ -13,24 +13,16 @@
 
   export default {
     name: 'Bookmarks',
-    data () {
-      return {
-      }
-    },
     components: {
       Bookmark
-    },
-    created () {
-
     },
     mounted () {
       console.log('Bookmarks mounted')
     },
-    computed () {
+    computed:
       Object.assign(mapGetters({
         list: 'bookmarks'
       }))
-    }
   }
 </script>
 
