@@ -8,7 +8,6 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
   import Bookmark from '../components/Bookmark'
 
   export default {
@@ -17,12 +16,12 @@
       Bookmark
     },
     mounted () {
-      console.log('Bookmarks mounted')
     },
-    computed:
-      Object.assign(mapGetters({
-        list: 'bookmarks'
-      }))
+    computed: {
+      list () {
+        return this.$store.getters.bookmarks
+      }
+    }
   }
 </script>
 

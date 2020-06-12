@@ -1,13 +1,12 @@
 <template lang="html">
-  <div class="star">
-    <button class="star__set" v-bind:class='{"star__set--selected" : selected}' v-on:click='onClick()' v-bind:title="test"></button>
+  <button class="star__set" v-bind:class='{"star__set--selected" : selected}' v-on:click='onClick()'>
     <template v-if="selected">
       STAR
     </template>
     <template v-else>
       NOSTAR
     </template>
-  </div>
+  </button>
 </template>
 
 <script>
@@ -15,6 +14,11 @@
     name: 'Star',
     props: {
       selected: {
+        type: Boolean,
+        required: false,
+        default: false
+      },
+      clicked: {
         type: Boolean,
         required: false,
         default: false
@@ -27,7 +31,7 @@
     },
     methods: {
       onClick () {
-        this.$emit('star:clicked')
+        this.$emit('clicked')
       }
     }
   }

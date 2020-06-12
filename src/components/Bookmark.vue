@@ -12,16 +12,13 @@
     name: 'Bookmark',
     props: {
       id: {
-        type: Number,
+        type: String,
         required: true
       },
       name: {
         type: String,
         required: true
       }
-    },
-    mounted () {
-      console.log('Cobookmark mounted')
     }
   }
 </script>

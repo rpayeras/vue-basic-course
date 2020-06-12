@@ -3,13 +3,12 @@
     <img v-bind:src="info.avatar_url" alt="" class="profile__photo">
     <h1 class="profile__name">{{ info.email }}</h1>
     <h2 class="profile__blog">{{ info.blog }}</h2>
-    <Star v-bind:selected="isBookmarked" v-on:clicked="onBookmark"></Star>
+    <Star v-bind:selected="isSelected" v-on:clicked="onBookmark"></Star>
   </section>
 </template>
 
 <script>
   import axios from 'axios'
-  import { mapGetters, mapActions } from 'vuex'
   import Star from './Star'
 
   export default{
@@ -34,17 +33,14 @@
       }
     },
     computed:
-      Object.assign({}, mapGetters({
-        isBookmarked: 'isSelected'
-      }),
-      mapActions({
-        modifyBookmark: 'modify'
-      }),
-      {
-        isSelected () {
-          return this.isBookmarked(this.info.login)
-        }
-      }),
+    {
+      isBookmarked () {
+        return this.$store.getters.isSelected
+      },
+      isSelected () {
+        return this.isBookmarked(this.info.login)
+      }
+    },
     methods: {
       getUserData () {
         console.log(process.env.API)
@@ -61,21 +57,17 @@
           })
       },
       onBookmark () {
-        this.modifyBookmark({
+        this.$store.dispatch('modify', {
           id: this.info.login,
           name: this.info.name
         })
       }
     },
     mounted () {
-      console.log('Mounted')
-      console.log(this.$route)
-
       this.getUserData()
     },
     updated () {
-      console.log('Updated')
-      console.log(this.$route)
+      console.log('Profile updated')
     },
     watch: {
       '$route': 'getUserData'
