@@ -56,7 +56,6 @@
     },
     methods: {
       onSearch (criteria) {
-        console.log('App component', criteria)
       }
     }
   }

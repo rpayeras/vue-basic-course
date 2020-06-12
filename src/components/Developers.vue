@@ -28,12 +28,10 @@
     },
     created () {
       bus.$on('search', criteria => {
-        console.log('Developers', criteria)
         this.show = true
       })
     },
     mounted () {
-      console.log('Developers mounted')
       this.getTopUsers()
       bus.$emit('search', '')
     },

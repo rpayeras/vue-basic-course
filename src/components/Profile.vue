@@ -34,17 +34,12 @@
     },
     computed:
     {
-      isBookmarked () {
-        return this.$store.getters.isSelected
-      },
       isSelected () {
-        return this.isBookmarked(this.info.login)
+        return this.$store.getters['bookmarksModule/isSelected'](this.info.login)
       }
     },
     methods: {
       getUserData () {
-        console.log(process.env.API)
-
         return axios(
           {
             method: 'GET',
@@ -57,7 +52,7 @@
           })
       },
       onBookmark () {
-        this.$store.dispatch('modify', {
+        this.$store.dispatch('bookmarksModule/modify', {
           id: this.info.login,
           name: this.info.name
         })
@@ -67,21 +62,17 @@
       this.getUserData()
     },
     updated () {
-      console.log('Profile updated')
     },
     watch: {
       '$route': 'getUserData'
     },
     beforeRouteEnter (to, from, next) {
-      console.log('Profile before route enter')
       next()
     },
     beforeRouteUpdate (to, from, next) {
-      console.log('Profile before route update')
       next()
     },
     beforeRouteLeave (to, from, next) {
-      console.log('Profile before leave')
       next()
     }
   }

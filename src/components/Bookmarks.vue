@@ -19,7 +19,7 @@
     },
     computed: {
       list () {
-        return this.$store.getters.bookmarks
+        return this.$store.getters['bookmarksModule/bookmarks']
       }
     }
   }

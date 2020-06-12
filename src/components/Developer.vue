@@ -86,11 +86,9 @@
     },
     watch: {
       metadata (newValue) {
-        console.log(newValue)
       }
     },
     mounted () {
-      console.log('CoDeveloper mounted')
     }
   }
 </script>
